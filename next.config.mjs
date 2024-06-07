@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  imagens: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'dogsapi.origamid.dev'
+      }
+    ]
+  }
+};
 
 export default nextConfig;
