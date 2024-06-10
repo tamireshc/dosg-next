@@ -1,6 +1,7 @@
 import { type_second } from "@/functions/fonts";
 import type { Metadata } from "next";
 
+import Footer from "@/components/footer";
 import Header from "@/components/header";
 import "./globals.css";
 
@@ -17,8 +18,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={type_second.variable}>
-        <Header />
-        {children}
+        <div className="App">
+          <Header />
+          <main className="AppBody">{children}</main>
+
+          <Footer />
+        </div>
       </body>
     </html>
   );
