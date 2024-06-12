@@ -6,7 +6,8 @@ import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import Button from "../forms/button";
 import Input from "../forms/input";
-import styles from "../forms/input.module.css";
+import stylesInput from "../forms/input.module.css";
+import styles from "./login-form.module.css";
 
 function FormButton() {
   const { pending } = useFormStatus();
@@ -27,13 +28,22 @@ export default function LoginForm() {
 
   return (
     <>
-      <form action={action}>
+      <form action={action} className={styles.form}>
         <Input label="Usuário" name="username" type="text" />
         <Input label="Senha" name="password" type="password" />
         <FormButton />
-        <p className={styles.error}>{state.error}</p>
+        <p className={stylesInput.error}>{state.error}</p>
       </form>
-      <Link href="/login/perdeu">Perdeu a senha?</Link>
+      <Link href="/login/perdeu" className={styles.perdeu}>
+        Perdeu a senha?
+      </Link>
+      <div className={styles.cadastro}>
+        <h2 className={styles.subtitle}>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre-se no site</p>
+        <Link href="/login/criar" className="button">
+          Cadastre-se
+        </Link>
+      </div>
     </>
   );
 }
