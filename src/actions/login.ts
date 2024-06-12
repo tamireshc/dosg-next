@@ -7,6 +7,7 @@ export default async function login(state: {}, formData: FormData) {
   const username = formData.get("username") as string | null
   const password = formData.get("password") as string | null
 
+
   try {
     if (!username || !password) throw new Error("Preencha os dados")
 
@@ -20,7 +21,7 @@ export default async function login(state: {}, formData: FormData) {
       },
     );
 
-    if (!response.ok) throw new Error("Senhá ou usuário inválido")
+    if (!response.ok) throw new Error("Senha ou usuário inválido")
 
     const data = await response.json();
     cookies().set('token', data.token, {
@@ -29,6 +30,7 @@ export default async function login(state: {}, formData: FormData) {
       sameSite: 'lax',
       maxAge: 60 * 60 * 24, // 1 dia em segundos
     });
+
 
     return { data: null, ok: true, error: "" }
 
