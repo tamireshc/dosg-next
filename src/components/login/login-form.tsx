@@ -12,7 +12,15 @@ import styles from "./login-form.module.css";
 function FormButton() {
   const { pending } = useFormStatus();
 
-  return <Button disabled={pending}>Entrar</Button>;
+  return (
+    <>
+      {pending ? (
+        <Button disabled={pending}>Entrando ...</Button>
+      ) : (
+        <Button>Entrar</Button>
+      )}
+    </>
+  );
 }
 
 export default function LoginForm() {
