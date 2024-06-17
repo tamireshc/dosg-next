@@ -8,7 +8,7 @@ export default function ContaPage() {
   console.log(data);
   return (
     <main>
-      <h1>Conta</h1>
+      <h1>COnta</h1>
     </main>
   );
 }
