@@ -1,11 +1,11 @@
-"use client";
-
-import { UserContext } from "@/context/user-contex";
+import { Metadata } from "next";
 import React from "react";
 
+export const metadata: Metadata = {
+  title: "Postar | Minha conta",
+};
+
 export default function ContaPage() {
-  const data = React.useContext(UserContext);
-  console.log(data);
   return (
     <main>
       <h1>COnta</h1>
