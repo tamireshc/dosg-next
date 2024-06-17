@@ -9,6 +9,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import styles from "./conta-header.module.css";
+import logout from "@/actions/lougout";
+import { UserContext } from "@/context/user-contex";
 
 function getTitle(pathname: string) {
   switch (pathname) {
@@ -24,6 +26,7 @@ function getTitle(pathname: string) {
 export default function ContaHeader() {
   const mobile = useMedia("(max-width: 40rem)");
   const [mobileMenu, setMobileMenu] = React.useState(false);
+  const data = React.useContext(UserContext);
 
   const pathname = usePathname();
 
@@ -31,16 +34,17 @@ export default function ContaHeader() {
     setMobileMenu(false);
   }, [pathname]);
 
-  function handleLogout() {
-    // userLogout();
+  async function handleLogout() {
+    await logout();
+    data?.setUser(null);
   }
 
   return (
     <header className={styles.header}>
-      <h1 className="title">{getTitle(pathname)}</h1>
+      <h1 className='title'>{getTitle(pathname)}</h1>
       {mobile && (
         <button
-          aria-label="Menu"
+          aria-label='Menu'
           className={`${styles.mobileButton} ${
             mobileMenu && styles.mobileButtonActive
           }`}
@@ -53,19 +57,19 @@ export default function ContaHeader() {
           mobileMenu && styles.navMobileActive
         }`}
       >
-        <Link href="/conta" className={pathname === "/conta" ? "active" : ""}>
+        <Link href='/conta' className={pathname === "/conta" ? "active" : ""}>
           <FeedIcon />
           {mobile && "Minhas Fotos"}
         </Link>
         <Link
-          href="/conta/estatisticas"
+          href='/conta/estatisticas'
           className={pathname === "/conta/estatisticas" ? "active" : ""}
         >
           <EstatisticasIcon />
           {mobile && "Estatísticas"}
         </Link>
         <Link
-          href="/conta/postar"
+          href='/conta/postar'
           className={pathname === "/conta/postar" ? "active" : ""}
         >
           <AdicionarIcon />
