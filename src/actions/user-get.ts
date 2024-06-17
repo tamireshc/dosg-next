@@ -36,7 +36,7 @@ export default async function userGet() {
 
     if (!response.ok) throw new Error("Erro ao pegar o usuário")
 
-    return { data, ok: true, error: "" }
+    return { data: data, ok: true, error: "" }
 
   } catch (error: unknown) {
     if (error instanceof Error) {
