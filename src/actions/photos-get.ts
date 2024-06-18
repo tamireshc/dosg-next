@@ -17,7 +17,7 @@ export type Photo = {
 type PhotosGetParams = {
   page?: number;
   total?: number;
-  user?: 0 | number;
+  user?: 0 | string;
 };
 
 export default async function photosGet({
@@ -27,12 +27,14 @@ export default async function photosGet({
 }: PhotosGetParams = {}) {
   try {
     const { url } = PHOTOS_GET({ page, total, user });
+
     const response = await fetch(url, {
       next: { revalidate: 10, tags: ['photos'] },
     });
     if (!response.ok) throw new Error('Erro ao pegar as fotos.');
     const data = (await response.json()) as Photo[];
     return { data, ok: true, error: '' };
+
   } catch (error: unknown) {
     if (error instanceof Error) {
       return { data: null, ok: false, error: error.message }
