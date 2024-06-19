@@ -8,7 +8,6 @@ export default function FeedPhotos({
 }: {
   photos: Photo[] | undefined | null;
 }) {
-  console.log(photos);
   return (
     <ul className={`${styles.feed} animeLeft`}>
       {photos?.map((photo, i) => (
