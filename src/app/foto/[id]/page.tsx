@@ -1,7 +1,18 @@
-export default function FotoIdPage({ params }: { params: { id: number } }) {
+import photoGet from "@/actions/photo-get";
+import PhotoContent from "@/components/photo/photo-content";
+import { notFound } from "next/navigation";
+
+export default async function FotoIdPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const data = await photoGet(params.id);
+  if (!data?.data) return notFound();
+
   return (
-    <main>
-      <h1>Foto id : {params.id}</h1>
-    </main>
+    <section className="container mainContainer">
+      <PhotoContent data={data.data} single={true} />
+    </section>
   );
 }
