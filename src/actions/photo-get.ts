@@ -4,7 +4,7 @@ import { PHOTO_GET } from '@/functions/api';
 import { Photo } from './photos-get';
 
 
-type Comment = {
+export type Comment = {
   comment_ID: string,
   comment_post_ID: string,
   comment_author: string,
