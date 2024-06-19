@@ -31,7 +31,6 @@ export default async function photoGet(id: string) {
     });
     if (!response.ok) throw new Error('Erro ao pegar a foto.');
     const data = (await response.json()) as PhotoData;
-    console.log("data", data)
     return { data, ok: true, error: '' };
 
   } catch (error: unknown) {

@@ -17,12 +17,11 @@ export default function Feed({
   const [page, setPage] = React.useState(1);
   const [loading, setLoading] = React.useState(false);
   const [infinite, setInfinite] = React.useState(
-    photos.length < 6 ? false : true
+    photos.length < 6 ? false : true,
   );
 
   const fetching = React.useRef(false);
   function infiniteScroll() {
-    console.log("aconteceu");
     if (fetching.current) return;
     fetching.current = true;
     setLoading(true);
@@ -40,7 +39,7 @@ export default function Feed({
         { page, total: 6, user: 0 },
         {
           cache: "no-store",
-        }
+        },
       );
       if (actionData && actionData.data !== null) {
         const { data } = actionData;

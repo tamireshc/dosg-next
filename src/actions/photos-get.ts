@@ -36,7 +36,6 @@ export default async function photosGet({
     const response = await fetch(url, options);
     if (!response.ok) throw new Error('Erro ao pegar as fotos.');
     const data = (await response.json()) as Photo[];
-    console.log("data", data)
     return { data, ok: true, error: '' };
 
   } catch (error: unknown) {
