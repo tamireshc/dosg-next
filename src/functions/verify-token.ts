@@ -13,4 +13,4 @@ export default async function verifyToken(token: string): Promise<boolean> {
     return false
   }
 }
-//continua no comentario do middleware
+//continua no comentário do middleware
